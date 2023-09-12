@@ -1,13 +1,15 @@
 import React from 'react'
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons'
 import { Avatar, Card } from 'antd'
+import eventData from '../data/eventData'  
 
 const { Meta } = Card
 
 const CardComponent = () => {
   return (
     <>
-        <Card
+        {eventData.map((event) => (
+           <Card
             style={{ width: 300 }}
             cover={
                 <img
@@ -23,11 +25,14 @@ const CardComponent = () => {
             >
             <Meta
                 avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                title="Card title!"
-                description="This is the description"
+                title={event.name}
+                description={'Description: ' + event.description + '  ' + 'Date: ' + event.date}
 
             />
-        </Card>
+        </Card>   
+        ))      
+        }
+
     </>
 
   )
